@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/srv
+    networks:
+      - www
+
+  phpfpm:
+    image: php:fpm-alpine
+    volumes:
+      - ./:/srv
+    networks:
+      - www
+
+  composer:
+    image: composer
+    restart: "no"
+    command: "composer install --ignore-platform-reqs --no-scripts"
+    working_dir: /srv
+    volumes:
+      - ./:/srv
+    depends_on:
+      - phpfpm
+
+networks:
+  www:
