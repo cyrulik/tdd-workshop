@@ -1,7 +1,16 @@
 {
+    "name": "cyrulik/tdd-workshop",
+    "description": "Simple FizzBuzz task setup for a TDD workshop",
+    "keywords": ["TDD", "PHPUnit", "fizzbuzz"],
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "require-dev": {
